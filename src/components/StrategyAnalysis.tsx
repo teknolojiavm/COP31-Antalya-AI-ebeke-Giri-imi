@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, TrendingUp, Compass, Check, ArrowRight, ShieldCheck, SunMedium, Server, Award } from 'lucide-react';
+import smartGridControlCenter from '../assets/images/smart_grid_control_center_1794120964028.jpg';
 
 interface StrategyAnalysisProps {
   lang: 'tr' | 'en';
@@ -70,7 +71,7 @@ export const StrategyAnalysis: React.FC<StrategyAnalysisProps> = ({ lang, onOpen
       <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm bg-slate-900">
         <div className="h-64 sm:h-80 w-full relative">
           <img
-            src="/src/assets/images/smart_grid_control_center_1794120964028.jpg"
+            src={smartGridControlCenter}
             alt="Mediterranean Smart Grid Control Center"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"

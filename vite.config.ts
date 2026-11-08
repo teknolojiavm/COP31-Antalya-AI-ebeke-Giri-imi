@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/COP31-Antalya-AI-ebeke-Giri-imi/',
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

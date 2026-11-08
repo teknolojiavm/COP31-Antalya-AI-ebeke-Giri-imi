@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, SunMedium, Activity, Building2, Download, ExternalLink, Sparkles } from 'lucide-react';
 import { Signatory, INITIAL_SIGNATORIES } from '../data/mockData';
+import antalyaGreenPavilion from '../assets/images/antalya_green_pavilion_1794120963679.jpg';
 
 interface ShowcaseViewProps {
   onOpenCommitment: () => void;
@@ -120,7 +121,7 @@ export const ShowcaseView: React.FC<ShowcaseViewProps> = ({
           <div className="lg:col-span-5">
             <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md aspect-[16/10] sm:aspect-[16/10] bg-slate-900">
               <img
-                src="/src/assets/images/antalya_green_pavilion_1794120963679.jpg"
+                src={antalyaGreenPavilion}
                 alt="Antalya Sustainable Tech Summit Green Innovation Pavilion"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
