@@ -1,0 +1,6 @@
+{
+  "name": "COP31 Antalya AI & Şebeke Girişimi",
+  "description": "Birleşmiş Milletler COP31 Antalya Zirvesi Yapay Zekâ Taahhüdü ve Akdeniz Temiz Enerji Şebeke Girişimi Platformu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
