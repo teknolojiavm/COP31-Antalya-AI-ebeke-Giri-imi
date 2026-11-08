@@ -76,29 +76,29 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
   return (
     <div className="space-y-8">
       {/* Simulation Header */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-4">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 space-y-4 transition-colors">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800">
-              <Zap className="w-4 h-4 text-emerald-600" />
+            <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 dark:text-emerald-400">
+              <Zap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>{isTr ? 'Canlı Akdeniz Şebeke Modeli' : 'Live Mediterranean Grid Model'}</span>
-              <span className="text-slate-300">·</span>
-              <span className="font-mono text-slate-500">TEİAŞ & COP31 Framework</span>
+              <span className="text-slate-300 dark:text-slate-600">·</span>
+              <span className="font-mono text-slate-500 dark:text-slate-400">TEİAŞ & COP31 Framework</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               {t.title}
             </h1>
-            <p className="text-sm text-slate-600 max-w-3xl">
+            <p className="text-sm text-slate-600 dark:text-slate-300 max-w-3xl">
               {t.subtitle}
             </p>
           </div>
 
           {/* Time & Play Controls */}
-          <div className="flex items-center gap-3 shrink-0 bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <div className="flex items-center gap-3 shrink-0 bg-slate-50 dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
             <button
               onClick={() => setIsPlaying(!isPlaying)}
               className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
-                isPlaying ? 'bg-amber-600 text-white hover:bg-amber-700' : 'bg-emerald-800 text-white hover:bg-emerald-900'
+                isPlaying ? 'bg-amber-600 text-white hover:bg-amber-700' : 'bg-emerald-800 dark:bg-emerald-600 text-white hover:bg-emerald-900 dark:hover:bg-emerald-500'
               }`}
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-current" />}
@@ -111,22 +111,22 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
                 setCurrentHourIndex(6);
                 setFlexibilityRate(65);
               }}
-              className="p-2 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-200 transition-colors cursor-pointer"
+              className="p-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
               title={t.btnReset}
             >
               <RotateCcw className="w-4 h-4" />
             </button>
 
-            <div className="pl-3 border-l border-slate-300 text-right">
+            <div className="pl-3 border-l border-slate-300 dark:border-slate-700 text-right">
               <div className="text-[10px] text-slate-400 font-medium">{t.currentHour}</div>
-              <div className="text-lg font-bold font-mono text-slate-900">{currentData.hour}</div>
+              <div className="text-lg font-bold font-mono text-slate-900 dark:text-white">{currentData.hour}</div>
             </div>
           </div>
         </div>
 
         {/* 24-Hour Timeline Selector Bar */}
         <div className="pt-2">
-          <div className="flex items-center justify-between text-xs font-mono text-slate-500 pb-1">
+          <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 pb-1">
             <span>00:00 (Gece)</span>
             <span>12:00 (Güneş Zirvesi)</span>
             <span>22:00 (Akşam Piki)</span>
@@ -138,8 +138,8 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
                 onClick={() => setCurrentHourIndex(idx)}
                 className={`py-2 px-1 text-center rounded text-xs font-mono font-medium transition-all cursor-pointer ${
                   currentHourIndex === idx
-                    ? 'bg-emerald-800 text-white font-bold shadow-xs'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    ? 'bg-emerald-800 dark:bg-emerald-600 text-white font-bold shadow-xs'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
                 }`}
               >
                 {item.hour.split(':')[0]}h
@@ -151,64 +151,64 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
 
       {/* Real-Time Snapshot Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-xs space-y-2">
-          <div className="flex items-center justify-between text-xs text-slate-500">
+        <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2 transition-colors">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
             <span className="font-medium">{t.cardSolar}</span>
             <Sun className="w-4 h-4 text-amber-500" />
           </div>
-          <div className="text-2xl font-extrabold text-slate-900 font-mono tabular-nums">
-            {currentData.solar} <span className="text-sm font-sans font-medium text-slate-500">MW</span>
+          <div className="text-2xl font-extrabold text-slate-900 dark:text-white font-mono tabular-nums">
+            {currentData.solar} <span className="text-sm font-sans font-medium text-slate-500 dark:text-slate-400">MW</span>
           </div>
-          <div className="text-[11px] text-slate-500">
+          <div className="text-[11px] text-slate-500 dark:text-slate-400">
             {currentData.solar > 2000 ? (isTr ? 'Güneş Fazlası Aktif' : 'Solar Surplus High') : (isTr ? 'Düşük Güneş Işıması' : 'Low Irradiance')}
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-xs space-y-2">
-          <div className="flex items-center justify-between text-xs text-slate-500">
+        <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2 transition-colors">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
             <span className="font-medium">{t.cardWind}</span>
-            <Wind className="w-4 h-4 text-cyan-600" />
+            <Wind className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
           </div>
-          <div className="text-2xl font-extrabold text-slate-900 font-mono tabular-nums">
-            {currentData.wind + currentData.hydro} <span className="text-sm font-sans font-medium text-slate-500">MW</span>
+          <div className="text-2xl font-extrabold text-slate-900 dark:text-white font-mono tabular-nums">
+            {currentData.wind + currentData.hydro} <span className="text-sm font-sans font-medium text-slate-500 dark:text-slate-400">MW</span>
           </div>
-          <div className="text-[11px] text-slate-500">
+          <div className="text-[11px] text-slate-500 dark:text-slate-400">
             {isTr ? 'Temel Akdeniz Rüzgar & Hidro' : 'Base Wind & Hydro Dispatch'}
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-xs space-y-2">
-          <div className="flex items-center justify-between text-xs text-slate-500">
+        <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2 transition-colors">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
             <span className="font-medium">{t.cardAiLoad}</span>
-            <Zap className="w-4 h-4 text-emerald-600" />
+            <Zap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <div className="text-2xl font-extrabold text-emerald-800 font-mono tabular-nums">
-            {Math.round(shiftedLoad)} <span className="text-sm font-sans font-medium text-slate-500">MW</span>
+          <div className="text-2xl font-extrabold text-emerald-800 dark:text-emerald-400 font-mono tabular-nums">
+            {Math.round(shiftedLoad)} <span className="text-sm font-sans font-medium text-slate-500 dark:text-slate-400">MW</span>
           </div>
-          <div className="text-[11px] text-emerald-700 font-semibold">
+          <div className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold">
             {isSolarSurplusHour
               ? (isTr ? `+${Math.round(shiftedLoad - currentData.dataCenterFlat)} MW Güneş Tüketimi` : `+${Math.round(shiftedLoad - currentData.dataCenterFlat)} MW Solar Absorption`)
               : (isTr ? `-${Math.round(currentData.dataCenterFlat - shiftedLoad)} MW Gece Yük Tıraşlama` : `-${Math.round(currentData.dataCenterFlat - shiftedLoad)} MW Night Load Shedding`)}
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-xs space-y-2">
-          <div className="flex items-center justify-between text-xs text-slate-500">
+        <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2 transition-colors">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
             <span className="font-medium">{t.cardCarbon}</span>
-            <TrendingDown className="w-4 h-4 text-emerald-600" />
+            <TrendingDown className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <div className="text-2xl font-extrabold text-slate-900 font-mono tabular-nums">
-            {calculatedCarbon} <span className="text-sm font-sans font-medium text-slate-500">gCO₂/kWh</span>
+          <div className="text-2xl font-extrabold text-slate-900 dark:text-white font-mono tabular-nums">
+            {calculatedCarbon} <span className="text-sm font-sans font-medium text-slate-500 dark:text-slate-400">gCO₂/kWh</span>
           </div>
-          <div className="text-[11px] text-emerald-700 font-semibold">
+          <div className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold">
             {isTr ? `%${Math.round(((currentData.carbonIntensity - calculatedCarbon) / currentData.carbonIntensity) * 100)} Temiz Enerji İyileşmesi` : `%${Math.round(((currentData.carbonIntensity - calculatedCarbon) / currentData.carbonIntensity) * 100)} Carbon Improvement`}
           </div>
         </div>
       </div>
 
       {/* Interactive Controls & Parameter Adjustments */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-6">
-        <h3 className="text-base font-bold text-slate-900">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 space-y-6 transition-colors">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white">
           {isTr ? 'Şebeke Dengeleme ve AI Esneklik Parametreleri' : 'Grid Balancing & AI Flexibility Controls'}
         </h3>
 
@@ -216,8 +216,8 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
           {/* Slider 1: Flexibility */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-700">{t.controlFlex}</span>
-              <span className="font-mono font-bold text-emerald-800 text-sm">%{flexibilityRate}</span>
+              <span className="font-semibold text-slate-700 dark:text-slate-300">{t.controlFlex}</span>
+              <span className="font-mono font-bold text-emerald-800 dark:text-emerald-400 text-sm">%{flexibilityRate}</span>
             </div>
             <input
               type="range"
@@ -225,9 +225,9 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
               max="80"
               value={flexibilityRate}
               onChange={(e) => setFlexibilityRate(Number(e.target.value))}
-              className="w-full accent-emerald-700 cursor-pointer"
+              className="w-full accent-emerald-700 dark:accent-emerald-500 cursor-pointer"
             />
-            <p className="text-[11px] text-slate-500 leading-tight">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
               {t.controlFlexDesc}
             </p>
           </div>
@@ -235,8 +235,8 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
           {/* Slider 2: Battery */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-700">{t.controlBattery}</span>
-              <span className="font-mono font-bold text-emerald-800 text-sm">{batteryStorageMWh} MWh</span>
+              <span className="font-semibold text-slate-700 dark:text-slate-300">{t.controlBattery}</span>
+              <span className="font-mono font-bold text-emerald-800 dark:text-emerald-400 text-sm">{batteryStorageMWh} MWh</span>
             </div>
             <input
               type="range"
@@ -245,9 +245,9 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
               step="50"
               value={batteryStorageMWh}
               onChange={(e) => setBatteryStorageMWh(Number(e.target.value))}
-              className="w-full accent-emerald-700 cursor-pointer"
+              className="w-full accent-emerald-700 dark:accent-emerald-500 cursor-pointer"
             />
-            <p className="text-[11px] text-slate-500 leading-tight">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
               {isTr ? 'Gündüz güneş fazlasını depolayıp akşam zirvesinde AI yükünü besleyen batarya parkı.' : 'Stationary storage buffering midday surplus to power compute during evening peaks.'}
             </p>
           </div>
@@ -255,8 +255,8 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
           {/* Slider 3: PUE */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-700">{t.controlPue}</span>
-              <span className="font-mono font-bold text-emerald-800 text-sm">{pueValue.toFixed(2)}</span>
+              <span className="font-semibold text-slate-700 dark:text-slate-300">{t.controlPue}</span>
+              <span className="font-mono font-bold text-emerald-800 dark:text-emerald-400 text-sm">{pueValue.toFixed(2)}</span>
             </div>
             <input
               type="range"
@@ -265,9 +265,9 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
               step="0.01"
               value={pueValue}
               onChange={(e) => setPueValue(Number(e.target.value))}
-              className="w-full accent-emerald-700 cursor-pointer"
+              className="w-full accent-emerald-700 dark:accent-emerald-500 cursor-pointer"
             />
-            <p className="text-[11px] text-slate-500 leading-tight">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
               {isTr ? 'Kapalı devre sıvı soğutma ile hedeflenen ultra yüksek verimlilik seviyesi.' : 'Direct liquid cooling target efficiency ratio (PUE ≤ 1.15 COP31 criteria).'}
             </p>
           </div>
@@ -275,11 +275,11 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
       </div>
 
       {/* Visual Interactive Profile Chart (Pure SVG for sharpness and responsiveness) */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 space-y-4 transition-colors">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h3 className="text-base font-bold text-slate-900">{t.chartTitle}</h3>
-            <p className="text-xs text-slate-500">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">{t.chartTitle}</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               {isTr ? 'Güneş üretimi tavan yaptığında AI veri merkezi tüketiminin kontrollü olarak artışı.' : 'Dynamic compute scaling synchronized with midday solar production.'}
             </p>
           </div>
@@ -287,26 +287,26 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
           <div className="flex flex-wrap items-center gap-4 text-xs">
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 rounded-sm bg-amber-400"></span>
-              <span className="text-slate-600">{t.chartLegendSolar}</span>
+              <span className="text-slate-600 dark:text-slate-400">{t.chartLegendSolar}</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rounded-sm bg-emerald-700"></span>
-              <span className="text-slate-900 font-semibold">{t.chartLegendFlex}</span>
+              <span className="w-3 h-3 rounded-sm bg-emerald-700 dark:bg-emerald-500"></span>
+              <span className="text-slate-900 dark:text-white font-semibold">{t.chartLegendFlex}</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-3 h-1 bg-slate-400"></span>
-              <span className="text-slate-500">{t.chartLegendFlat}</span>
+              <span className="w-3 h-1 bg-slate-400 dark:bg-slate-500"></span>
+              <span className="text-slate-500 dark:text-slate-400">{t.chartLegendFlat}</span>
             </div>
           </div>
         </div>
 
         {/* SVG Chart Rendering */}
-        <div className="relative w-full h-64 bg-slate-50 rounded-xl p-4 overflow-hidden border border-slate-100">
+        <div className="relative w-full h-64 bg-slate-50 dark:bg-slate-950 rounded-xl p-4 overflow-hidden border border-slate-100 dark:border-slate-800">
           <svg className="w-full h-full overflow-visible" viewBox="0 0 1100 220" preserveAspectRatio="none">
             {/* Grid lines */}
-            <line x1="0" y1="40" x2="1100" y2="40" stroke="#e2e8f0" strokeDasharray="4 4" />
-            <line x1="0" y1="100" x2="1100" y2="100" stroke="#e2e8f0" strokeDasharray="4 4" />
-            <line x1="0" y1="160" x2="1100" y2="160" stroke="#e2e8f0" strokeDasharray="4 4" />
+            <line x1="0" y1="40" x2="1100" y2="40" stroke="#cbd5e1" strokeDasharray="4 4" className="stroke-slate-300 dark:stroke-slate-800" />
+            <line x1="0" y1="100" x2="1100" y2="100" stroke="#cbd5e1" strokeDasharray="4 4" className="stroke-slate-300 dark:stroke-slate-800" />
+            <line x1="0" y1="160" x2="1100" y2="160" stroke="#cbd5e1" strokeDasharray="4 4" className="stroke-slate-300 dark:stroke-slate-800" />
 
             {/* Solar Area */}
             <path
@@ -363,7 +363,7 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
                 L 1000 170
                 L 1100 172`}
               fill="none"
-              stroke="#047857"
+              stroke="#059669"
               strokeWidth="3.5"
             />
 
@@ -373,35 +373,35 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
               y1="0"
               x2={(currentHourIndex / (HOURLY_GRID_DATA.length - 1)) * 1100}
               y2="220"
-              stroke="#0f172a"
+              stroke="#64748b"
               strokeWidth="2"
             />
             <circle
               cx={(currentHourIndex / (HOURLY_GRID_DATA.length - 1)) * 1100}
               cy="20"
               r="5"
-              fill="#0f172a"
+              fill="#10b981"
             />
           </svg>
         </div>
 
         {/* Impact Summary Bar */}
         <div className="pt-2 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-          <div className="p-3 bg-slate-50 rounded-lg">
-            <div className="text-xs text-slate-500 font-medium">{t.statusFossil}</div>
-            <div className="text-lg font-bold text-slate-900 font-mono">
+          <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">{t.statusFossil}</div>
+            <div className="text-lg font-bold text-slate-900 dark:text-white font-mono">
               ~{Math.round(flexibilityRate * 14.5)} MWh / {isTr ? 'gün' : 'day'}
             </div>
           </div>
-          <div className="p-3 bg-emerald-50 rounded-lg">
-            <div className="text-xs text-emerald-800 font-medium">{t.statusCurtailed}</div>
-            <div className="text-lg font-bold text-emerald-800 font-mono">
+          <div className="p-3 bg-emerald-50 dark:bg-emerald-950/60 rounded-lg">
+            <div className="text-xs text-emerald-800 dark:text-emerald-300 font-medium">{t.statusCurtailed}</div>
+            <div className="text-lg font-bold text-emerald-800 dark:text-emerald-400 font-mono">
               ~{Math.round(flexibilityRate * 11.2)} MWh {isTr ? 'korundu' : 'saved'}
             </div>
           </div>
-          <div className="p-3 bg-slate-50 rounded-lg">
-            <div className="text-xs text-slate-500 font-medium">{t.statusCFE}</div>
-            <div className="text-lg font-bold text-slate-900 font-mono">
+          <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">{t.statusCFE}</div>
+            <div className="text-lg font-bold text-slate-900 dark:text-white font-mono">
               % {Math.min(100, Math.round(75 + (flexibilityRate * 0.3)))} 24/7 CFE
             </div>
           </div>
@@ -409,7 +409,7 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
       </div>
 
       {/* Call to Action */}
-      <div className="p-6 bg-slate-900 text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="p-6 bg-slate-900 dark:bg-slate-900/90 text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-slate-800">
         <div className="space-y-1">
           <h4 className="text-lg font-bold">
             {isTr ? 'Bu Şebeke Dengeleme Protokolüne Kurumunuzu Katın' : 'Enroll Your Data Center into the Grid Compact'}
@@ -424,7 +424,7 @@ export const GridSimulator: React.FC<GridSimulatorProps> = ({ lang, onOpenCommit
           onClick={onOpenCommitment}
           className="px-5 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl transition-colors whitespace-nowrap cursor-pointer"
         >
-          {isTr ? 'Resmi Taahhüdü İmzala' : 'Sign Official Commitment'}
+          {isTr ? 'Resmi Taahhüdü İmzala' : 'Sign Official Compact'}
         </button>
       </div>
     </div>

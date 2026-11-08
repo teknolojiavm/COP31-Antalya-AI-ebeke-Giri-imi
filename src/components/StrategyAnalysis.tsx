@@ -51,23 +51,23 @@ export const StrategyAnalysis: React.FC<StrategyAnalysisProps> = ({ lang, onOpen
   return (
     <div className="space-y-10">
       {/* Header */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-4">
-        <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800">
-          <Compass className="w-4 h-4 text-emerald-600" />
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 space-y-4 transition-colors">
+        <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 dark:text-emerald-400">
+          <Compass className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <span>{isTr ? 'COP31 Diplomatik & Teknik Strateji Belgeliği' : 'COP31 Diplomatic & Technical Strategy Dossier'}</span>
-          <span className="text-slate-300">·</span>
-          <span className="text-slate-500 font-mono">UNFCCC Article 6 & Net-Zero 2050</span>
+          <span className="text-slate-300 dark:text-slate-600">·</span>
+          <span className="text-slate-500 dark:text-slate-400 font-mono">UNFCCC Article 6 & Net-Zero 2050</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           {t.title}
         </h1>
-        <p className="text-sm text-slate-600 max-w-3xl leading-relaxed">
+        <p className="text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
           {t.subtitle}
         </p>
       </div>
 
       {/* Control Room Photography Spotlight */}
-      <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900">
+      <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm bg-slate-900">
         <div className="h-64 sm:h-80 w-full relative">
           <img
             src="/src/assets/images/smart_grid_control_center_1794120964028.jpg"
@@ -95,28 +95,28 @@ export const StrategyAnalysis: React.FC<StrategyAnalysisProps> = ({ lang, onOpen
 
       {/* Comparison Matrix: Traditional vs COP31 Antalya */}
       <div className="space-y-4">
-        <h2 className="text-xl font-bold text-slate-900 tracking-tight">
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
           {t.comparisonTitle}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Traditional Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 space-y-4 transition-colors">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
               <div>
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
                   {isTr ? 'Mevcut Durum' : 'Baseline Baseline'}
                 </span>
-                <h3 className="text-lg font-bold text-slate-800">
+                <h3 className="text-lg font-bold text-slate-800 dark:text-white">
                   {isTr ? 'Geleneksel Veri Merkezi' : 'Traditional Data Center'}
                 </h3>
               </div>
-              <span className="text-xs font-mono font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded">
+              <span className="text-xs font-mono font-bold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 px-2.5 py-1 rounded">
                 PUE ≥ 1.55
               </span>
             </div>
 
-            <ul className="space-y-3 text-xs sm:text-sm text-slate-600">
+            <ul className="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
               <li className="flex items-start gap-2">
                 <span className="text-rose-500 font-bold shrink-0">✕</span>
                 <span><strong>{isTr ? 'Sabit Tüketim Profili:' : 'Flat Power Draw:'}</strong> {isTr ? 'Gece ve akşam fosil pik saatlerinde şebekeyi zorlar.' : 'Draws high power blindly during evening fossil peaks.'}</span>
@@ -175,24 +175,24 @@ export const StrategyAnalysis: React.FC<StrategyAnalysisProps> = ({ lang, onOpen
       </div>
 
       {/* Interactive Strategy Synthesis Tool */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-6">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 space-y-6 transition-colors">
         <div className="space-y-1">
-          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800">
-            <Sparkles className="w-4 h-4 text-emerald-600" />
+          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 dark:text-emerald-400">
+            <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span>{t.generatorTitle}</span>
           </div>
-          <p className="text-xs sm:text-sm text-slate-600">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
             {t.generatorDesc}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-700">{isTr ? 'Kurum Türü' : 'Organization Type'}</label>
+            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">{isTr ? 'Kurum Türü' : 'Organization Type'}</label>
             <select
               value={orgType}
               onChange={(e) => setOrgType(e.target.value)}
-              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-800"
+              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100"
             >
               <option value="hyperscale">{isTr ? 'Hiper-Ölçekli Bulut / AI Sağlayıcı' : 'Hyperscale Cloud / AI'}</option>
               <option value="telco">{isTr ? 'Telekomünikasyon & Kolokasyon Veri Merkezi' : 'Telco & Colocation'}</option>
@@ -201,11 +201,11 @@ export const StrategyAnalysis: React.FC<StrategyAnalysisProps> = ({ lang, onOpen
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-700">{isTr ? 'Hedef Bölge' : 'Region'}</label>
+            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">{isTr ? 'Hedef Bölge' : 'Region'}</label>
             <select
               value={region}
               onChange={(e) => setRegion(e.target.value)}
-              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-800"
+              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100"
             >
               <option value="antalya">Antalya & Batı Akdeniz (GES Odaklı)</option>
               <option value="izmir">İzmir & Ege Koridoru (RES & GES Karma)</option>
@@ -218,7 +218,7 @@ export const StrategyAnalysis: React.FC<StrategyAnalysisProps> = ({ lang, onOpen
             <button
               onClick={handleGenerateStrategy}
               disabled={analyzing}
-              className="w-full py-2.5 px-4 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer disabled:opacity-50"
+              className="w-full py-2.5 px-4 bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer disabled:opacity-50"
             >
               {analyzing ? t.btnAnalyzing : t.btnAnalyze}
             </button>
@@ -227,21 +227,21 @@ export const StrategyAnalysis: React.FC<StrategyAnalysisProps> = ({ lang, onOpen
 
         {/* Strategy Roadmap Card if generated */}
         {analysisResult && (
-          <div className="p-6 rounded-xl border border-emerald-300 bg-emerald-50/40 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-emerald-200/60 pb-3">
+          <div className="p-6 rounded-xl border border-emerald-300 dark:border-emerald-700/60 bg-emerald-50/40 dark:bg-emerald-950/30 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-emerald-200/60 dark:border-emerald-800/60 pb-3">
               <div>
-                <span className="text-xs font-bold text-emerald-800 uppercase tracking-wide">
+                <span className="text-xs font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-wide">
                   {isTr ? 'Özel Strateji Özeti' : 'Strategic Roadmap Profile'}
                 </span>
-                <h4 className="text-base font-bold text-slate-900">
+                <h4 className="text-base font-bold text-slate-900 dark:text-white">
                   {analysisResult.organization}
                 </h4>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-emerald-900 bg-emerald-100 px-2.5 py-1 rounded">
+                <span className="text-xs font-bold text-emerald-900 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/60 px-2.5 py-1 rounded">
                   PUE: {analysisResult.targetPUE}
                 </span>
-                <span className="text-xs font-bold text-emerald-900 bg-emerald-100 px-2.5 py-1 rounded">
+                <span className="text-xs font-bold text-emerald-900 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/60 px-2.5 py-1 rounded">
                   {analysisResult.carbonReduction}
                 </span>
               </div>
@@ -249,16 +249,16 @@ export const StrategyAnalysis: React.FC<StrategyAnalysisProps> = ({ lang, onOpen
 
             {/* Milestones timeline */}
             <div className="space-y-3">
-              <div className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+              <div className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
                 {isTr ? '2026–2030 Uygulama Kilometre Taşları:' : '2026–2030 Execution Milestones:'}
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {analysisResult.milestones.map((m: any) => (
-                  <div key={m.year} className="p-3 bg-white rounded-lg border border-slate-200 space-y-1">
-                    <span className="text-xs font-mono font-bold text-emerald-800 block">
+                  <div key={m.year} className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 space-y-1">
+                    <span className="text-xs font-mono font-bold text-emerald-800 dark:text-emerald-400 block">
                       {m.year}
                     </span>
-                    <p className="text-xs text-slate-700 leading-snug">
+                    <p className="text-xs text-slate-700 dark:text-slate-300 leading-snug">
                       {m.step}
                     </p>
                   </div>
@@ -267,12 +267,12 @@ export const StrategyAnalysis: React.FC<StrategyAnalysisProps> = ({ lang, onOpen
             </div>
 
             <div className="flex items-center justify-between pt-2">
-              <span className="text-xs text-slate-600">
+              <span className="text-xs text-slate-600 dark:text-slate-400">
                 {isTr ? 'Bu stratejik planı resmi taahhütnamenize ekleyebilirsiniz.' : 'You can attach this strategy to your official commitment.'}
               </span>
               <button
                 onClick={onOpenCommitment}
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer"
               >
                 <span>{isTr ? 'Taahhüde Bağla & İmzala' : 'Link to Commitment & Sign'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />

@@ -74,17 +74,17 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
   return (
     <div className="space-y-8">
       {/* Module Title Header */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-2">
-        <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800">
-          <Cpu className="w-4 h-4 text-emerald-600" />
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 space-y-2 transition-colors">
+        <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 dark:text-emerald-400">
+          <Cpu className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <span>{isTr ? 'Resmi COP31 Teknik Değerlendirme Aracı' : 'Official COP31 Technical Audit Tool'}</span>
-          <span className="text-slate-300">·</span>
-          <span className="text-slate-500 font-mono">ISO 14064 & GHG Protocol</span>
+          <span className="text-slate-300 dark:text-slate-600">·</span>
+          <span className="text-slate-500 dark:text-slate-400 font-mono">ISO 14064 & GHG Protocol</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           {t.title}
         </h1>
-        <p className="text-sm text-slate-600 max-w-3xl leading-relaxed">
+        <p className="text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
           {t.subtitle}
         </p>
       </div>
@@ -92,16 +92,16 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
       {/* Two Column Grid: Inputs on Left, Real-time Metrics on Right */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left: Input Form Controls */}
-        <div className="lg:col-span-5 bg-white rounded-2xl border border-slate-200 p-6 space-y-6">
-          <h2 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+        <div className="lg:col-span-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 space-y-6 transition-colors">
+          <h2 className="text-base font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3">
             {t.secParameters}
           </h2>
 
           {/* Rack Count */}
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+            <div className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
               <label>{t.rackLabel}</label>
-              <span className="font-mono font-bold text-emerald-800">{rackCount} Kabin</span>
+              <span className="font-mono font-bold text-emerald-800 dark:text-emerald-400">{rackCount} Kabin</span>
             </div>
             <input
               type="range"
@@ -110,9 +110,9 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
               step="10"
               value={rackCount}
               onChange={(e) => setRackCount(Number(e.target.value))}
-              className="w-full accent-emerald-700 cursor-pointer"
+              className="w-full accent-emerald-700 dark:accent-emerald-500 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] text-slate-400">
+            <div className="flex justify-between text-[10px] text-slate-400 dark:text-slate-500">
               <span>10 Racks (Edge)</span>
               <span>250 Racks</span>
               <span>500 Racks (Hyperscale)</span>
@@ -121,11 +121,11 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
 
           {/* Hardware Type */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 block">{t.hwLabel}</label>
+            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">{t.hwLabel}</label>
             <select
               value={hardwareType}
               onChange={(e) => setHardwareType(e.target.value)}
-              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-700"
+              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-700"
             >
               <option value="h100">NVIDIA H100 / H200 SuperPOD (38 kW/rack)</option>
               <option value="b200">NVIDIA Blackwell B200 Ultra-Dense (75 kW/rack)</option>
@@ -136,7 +136,7 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
 
           {/* Cooling Type */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 block">{t.coolingLabel}</label>
+            <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">{t.coolingLabel}</label>
             <select
               value={coolingType}
               onChange={(e) => {
@@ -146,7 +146,7 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
                 else if (val === 'dlc') setPue(1.13);
                 else setPue(1.45);
               }}
-              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-700"
+              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-700"
             >
               <option value="dlc">Direkt Çipe Sıvı Soğutma (DLC - Closed Loop)</option>
               <option value="immersion">İki Fazlı / Tek Fazlı Sıvı Daldırma (Immersion)</option>
@@ -156,9 +156,9 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
 
           {/* PUE Slider */}
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+            <div className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
               <label>{t.pueLabel}</label>
-              <span className={`font-mono font-bold ${pue <= 1.15 ? 'text-emerald-700' : 'text-amber-600'}`}>
+              <span className={`font-mono font-bold ${pue <= 1.15 ? 'text-emerald-700 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
                 {pue.toFixed(2)} {pue <= 1.15 ? '✓ (COP31 Uyumlu)' : '⚠️ (> 1.15 Eşik Dışı)'}
               </span>
             </div>
@@ -169,15 +169,15 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
               step="0.01"
               value={pue}
               onChange={(e) => setPue(Number(e.target.value))}
-              className="w-full accent-emerald-700 cursor-pointer"
+              className="w-full accent-emerald-700 dark:accent-emerald-500 cursor-pointer"
             />
           </div>
 
           {/* Clean Energy Share */}
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+            <div className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
               <label>{t.cfeLabel}</label>
-              <span className="font-mono font-bold text-emerald-800">%{solarPpaShare}</span>
+              <span className="font-mono font-bold text-emerald-800 dark:text-emerald-400">%{solarPpaShare}</span>
             </div>
             <input
               type="range"
@@ -186,111 +186,111 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
               step="5"
               value={solarPpaShare}
               onChange={(e) => setSolarPpaShare(Number(e.target.value))}
-              className="w-full accent-emerald-700 cursor-pointer"
+              className="w-full accent-emerald-700 dark:accent-emerald-500 cursor-pointer"
             />
           </div>
         </div>
 
         {/* Right: Calculated Metrics & Article 50 Scorecard */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <h2 className="text-base font-bold text-slate-900">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 space-y-6 transition-colors">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white">
                 {t.secResults}
               </h2>
-              <span className="text-xs font-mono text-slate-500">
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
                 {itLoadKw.toLocaleString()} kW Toplam IT Gücü
               </span>
             </div>
 
             {/* Metric Boxes */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1">
-                <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700 space-y-1">
+                <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-medium">
                   <Zap className="w-3.5 h-3.5 text-amber-500" />
                   <span>{t.annualLoad}</span>
                 </div>
-                <div className="text-xl font-bold font-mono text-slate-900 tabular-nums">
-                  {annualEnergyMWh.toLocaleString()} <span className="text-xs font-sans font-normal text-slate-500">MWh/yıl</span>
+                <div className="text-xl font-bold font-mono text-slate-900 dark:text-white tabular-nums">
+                  {annualEnergyMWh.toLocaleString()} <span className="text-xs font-sans font-normal text-slate-500 dark:text-slate-400">MWh/yıl</span>
                 </div>
-                <div className="text-[11px] text-emerald-700">
+                <div className="text-[11px] text-emerald-700 dark:text-emerald-400">
                   ~{energySavedMWh.toLocaleString()} MWh tasarruf
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200/80 space-y-1">
-                <div className="flex items-center gap-1.5 text-xs text-emerald-800 font-medium">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800/60 space-y-1">
+                <div className="flex items-center gap-1.5 text-xs text-emerald-800 dark:text-emerald-300 font-medium">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                   <span>{t.carbonSaved}</span>
                 </div>
-                <div className="text-xl font-bold font-mono text-emerald-800 tabular-nums">
-                  {carbonAvoidedTons.toLocaleString()} <span className="text-xs font-sans font-normal text-emerald-600">Ton CO₂e/yıl</span>
+                <div className="text-xl font-bold font-mono text-emerald-800 dark:text-emerald-400 tabular-nums">
+                  {carbonAvoidedTons.toLocaleString()} <span className="text-xs font-sans font-normal text-emerald-600 dark:text-emerald-300">Ton CO₂e/yıl</span>
                 </div>
-                <div className="text-[11px] text-emerald-700 font-medium">
+                <div className="text-[11px] text-emerald-700 dark:text-emerald-400 font-medium">
                   %{Math.round((carbonAvoidedTons / baselineEmissions) * 100)} emisyon azaltımı
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-cyan-50/60 border border-cyan-200/80 space-y-1">
-                <div className="flex items-center gap-1.5 text-xs text-cyan-800 font-medium">
-                  <Droplets className="w-3.5 h-3.5 text-cyan-600" />
+              <div className="p-4 rounded-xl bg-cyan-50/60 dark:bg-cyan-950/40 border border-cyan-200/80 dark:border-cyan-800/60 space-y-1">
+                <div className="flex items-center gap-1.5 text-xs text-cyan-800 dark:text-cyan-300 font-medium">
+                  <Droplets className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                   <span>{t.waterSaved}</span>
                 </div>
-                <div className="text-xl font-bold font-mono text-cyan-900 tabular-nums">
-                  {(waterSavedLiters / 1000000).toFixed(1)} <span className="text-xs font-sans font-normal text-cyan-700">Milyon Litre</span>
+                <div className="text-xl font-bold font-mono text-cyan-900 dark:text-cyan-200 tabular-nums">
+                  {(waterSavedLiters / 1000000).toFixed(1)} <span className="text-xs font-sans font-normal text-cyan-700 dark:text-cyan-400">Milyon Litre</span>
                 </div>
-                <div className="text-[11px] text-cyan-700">
+                <div className="text-[11px] text-cyan-700 dark:text-cyan-400">
                   {coolingType !== 'air' ? 'Sıfır tatlı su tüketimi' : 'Yüksek su sarfiyatı'}
                 </div>
               </div>
             </div>
 
             {/* Compliance Progress Checklist */}
-            <div className="p-5 rounded-xl border border-slate-200 bg-slate-50/60 space-y-4">
+            <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/50 space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900">{t.complianceHeading}</h3>
-                  <p className="text-xs text-slate-500">
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">{t.complianceHeading}</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
                     {isTr ? 'COP31 Antalya yeşil deklarasyon kriterlerine uygunluk puanı' : 'Compliance score based on COP31 declaration rules'}
                   </p>
                 </div>
                 <div className="text-right">
-                  <span className={`text-2xl font-black font-mono ${complianceScore >= 80 ? 'text-emerald-700' : 'text-amber-600'}`}>
+                  <span className={`text-2xl font-black font-mono ${complianceScore >= 80 ? 'text-emerald-700 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
                     {complianceScore}/100
                   </span>
                 </div>
               </div>
 
               {/* Progress bar */}
-              <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden">
                 <div
-                  className={`h-2.5 rounded-full transition-all duration-500 ${complianceScore >= 80 ? 'bg-emerald-700' : 'bg-amber-500'}`}
+                  className={`h-2.5 rounded-full transition-all duration-500 ${complianceScore >= 80 ? 'bg-emerald-700 dark:bg-emerald-500' : 'bg-amber-500'}`}
                   style={{ width: `${complianceScore}%` }}
                 ></div>
               </div>
 
               <div className="space-y-2 text-xs">
-                <div className="flex items-center gap-2 text-slate-700">
+                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
                   {isPueCompliant ? (
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   ) : (
                     <AlertCircle className="w-4 h-4 text-amber-500 shrink-0" />
                   )}
                   <span><strong>PUE Hedefi:</strong> Tesis verimliliği ≤ 1.15 eşiğini sağlıyor ({pue.toFixed(2)})</span>
                 </div>
 
-                <div className="flex items-center gap-2 text-slate-700">
+                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
                   {isCfeCompliant ? (
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   ) : (
                     <AlertCircle className="w-4 h-4 text-amber-500 shrink-0" />
                   )}
                   <span><strong>Temiz Enerji Oranı:</strong> 24/7 CFE sertifikasyonu ≥ %80 ({solarPpaShare}%)</span>
                 </div>
 
-                <div className="flex items-center gap-2 text-slate-700">
+                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
                   {isWaterCompliant ? (
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   ) : (
                     <AlertCircle className="w-4 h-4 text-amber-500 shrink-0" />
                   )}
@@ -303,7 +303,7 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
             <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
               <button
                 onClick={() => setShowCertificateModal(true)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer border border-slate-700"
               >
                 <FileCheck2 className="w-4 h-4 text-emerald-400" />
                 <span>{t.btnGenCert}</span>
@@ -311,7 +311,7 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
 
               <button
                 onClick={onOpenCommitment}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer"
               >
                 <span>{isTr ? 'Bu Değerlerle Taahhüde Katıl' : 'Register with These Metrics'}</span>
               </button>
@@ -322,51 +322,51 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
 
       {/* Official Certificate Modal */}
       {showCertificateModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200 dark:border-slate-800 transition-colors">
             <div className="text-center space-y-1">
-              <div className="text-xs font-bold text-emerald-800 tracking-wider uppercase">
+              <div className="text-xs font-bold text-emerald-800 dark:text-emerald-400 tracking-wider uppercase">
                 Birleşmiş Milletler COP31 Antalya İklim Zirvesi
               </div>
-              <h3 className="text-xl font-extrabold text-slate-900">
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
                 Resmi Karbon & E-Dönüşüm Uygunluk Beyannamesi
               </h3>
-              <div className="text-xs text-slate-500 font-mono">
+              <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
                 Belge No: COP31-AUDIT-{Math.floor(100000 + Math.random() * 900000)}
               </div>
             </div>
 
-            <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
-              <div className="flex justify-between border-b border-slate-200 pb-1.5">
-                <span className="text-slate-500">Hesaplama Kapasitesi:</span>
-                <span className="font-bold text-slate-900">{rackCount} Kabin ({hardwareType.toUpperCase()})</span>
+            <div className="p-4 bg-slate-50 dark:bg-slate-800/70 rounded-xl border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+              <div className="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-1.5">
+                <span className="text-slate-500 dark:text-slate-400">Hesaplama Kapasitesi:</span>
+                <span className="font-bold text-slate-900 dark:text-white">{rackCount} Kabin ({hardwareType.toUpperCase()})</span>
               </div>
-              <div className="flex justify-between border-b border-slate-200 pb-1.5">
-                <span className="text-slate-500">Tesis PUE Katsayısı:</span>
-                <span className="font-bold text-slate-900">{pue.toFixed(2)}</span>
+              <div className="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-1.5">
+                <span className="text-slate-500 dark:text-slate-400">Tesis PUE Katsayısı:</span>
+                <span className="font-bold text-slate-900 dark:text-white">{pue.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between border-b border-slate-200 pb-1.5">
-                <span className="text-slate-500">24/7 CFE Temiz Enerji Payı:</span>
-                <span className="font-bold text-emerald-700">%{solarPpaShare}</span>
+              <div className="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-1.5">
+                <span className="text-slate-500 dark:text-slate-400">24/7 CFE Temiz Enerji Payı:</span>
+                <span className="font-bold text-emerald-700 dark:text-emerald-400">%{solarPpaShare}</span>
               </div>
-              <div className="flex justify-between border-b border-slate-200 pb-1.5">
-                <span className="text-slate-500">Yıllık Önlenecek Karbon:</span>
-                <span className="font-bold text-emerald-800">{carbonAvoidedTons.toLocaleString()} Ton CO₂e</span>
+              <div className="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-1.5">
+                <span className="text-slate-500 dark:text-slate-400">Yıllık Önlenecek Karbon:</span>
+                <span className="font-bold text-emerald-800 dark:text-emerald-400">{carbonAvoidedTons.toLocaleString()} Ton CO₂e</span>
               </div>
               <div className="flex justify-between pt-0.5">
-                <span className="text-slate-500">AB Yapay Zekâ Yasası Uyum Puanı:</span>
-                <span className="font-bold text-slate-900">{complianceScore}/100</span>
+                <span className="text-slate-500 dark:text-slate-400">AB Yapay Zekâ Yasası Uyum Puanı:</span>
+                <span className="font-bold text-slate-900 dark:text-white">{complianceScore}/100</span>
               </div>
             </div>
 
-            <p className="text-[11px] text-slate-500 text-center leading-relaxed">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 text-center leading-relaxed">
               Bu beyan, COP31 Antalya Zirvesi Dijital Şeffaflık Protokolü ve AB AI Act Madde 50 teknik raporlama standartlarına uygun olarak otomatik olarak derlenmiştir.
             </p>
 
             <div className="flex items-center justify-end gap-3 pt-2">
               <button
                 onClick={() => setShowCertificateModal(false)}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-pointer"
               >
                 Kapat
               </button>
@@ -374,7 +374,7 @@ export const EmbeddedModuleView: React.FC<EmbeddedModuleViewProps> = ({ lang, on
                 onClick={() => {
                   window.print();
                 }}
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Yazdır / PDF Olarak Kaydet</span>

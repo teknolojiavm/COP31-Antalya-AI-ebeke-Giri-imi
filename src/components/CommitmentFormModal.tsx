@@ -103,11 +103,11 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/65 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative my-8">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 relative my-8 transition-colors">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+          className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
@@ -115,48 +115,48 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
         {submittedCert ? (
           /* Certificate confirmation view */
           <div className="text-center space-y-6 py-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto ring-8 ring-emerald-50">
+            <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mx-auto ring-8 ring-emerald-50 dark:ring-emerald-950/40">
               <Award className="w-8 h-8" />
             </div>
 
             <div className="space-y-1">
-              <span className="text-xs font-semibold text-emerald-800 tracking-wider uppercase">
+              <span className="text-xs font-semibold text-emerald-800 dark:text-emerald-400 tracking-wider uppercase">
                 {isTr ? 'Tescil Edilmiş Resmi Diplomatik Belge' : 'Officially Registered Diplomatic Instrument'}
               </span>
-              <h2 className="text-2xl font-black text-slate-900">
+              <h2 className="text-2xl font-black text-slate-900 dark:text-white">
                 {isTr ? 'Taahhütname Başarıyla İmzalandı' : 'Compact Successfully Ratified'}
               </h2>
-              <p className="text-xs text-slate-500 font-mono">
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
                 {submittedCert.certCode} · {submittedCert.date}
               </p>
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 text-left space-y-3">
-              <div className="text-sm font-bold text-slate-900 border-b border-slate-200 pb-2">
+            <div className="bg-slate-50 dark:bg-slate-800/80 p-6 rounded-xl border border-slate-200 dark:border-slate-700 text-left space-y-3">
+              <div className="text-sm font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2">
                 {submittedCert.name}
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                 {isTr
                   ? `Kurumunuz, COP31 Antalya Zirvesi öncesinde ${capacityMW} MW temiz enerji kapasitesi ve PUE ≤ ${targetPUE} verimlilik hedefiyle Akdeniz Yapay Zekâ Taahhüdü resmi kayıt defterine eklenmiştir.`
                   : `Your organization has been entered into the official COP31 Antalya AI Compact Registry with ${capacityMW} MW capacity and a PUE ≤ ${targetPUE} target.`}
               </p>
-              <div className="pt-2 text-[11px] text-slate-500 flex items-center justify-between">
+              <div className="pt-2 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between">
                 <span>{isTr ? 'Doğrulama Statüsü: Resmi Katılımcı' : 'Verification: Official Signatory'}</span>
-                <span className="text-emerald-700 font-bold font-mono">24/7 CFE · UN COP31</span>
+                <span className="text-emerald-700 dark:text-emerald-400 font-bold font-mono">24/7 CFE · UN COP31</span>
               </div>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <button
                 onClick={() => window.print()}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer border border-slate-700"
               >
                 <Printer className="w-4 h-4" />
                 <span>{isTr ? 'Sertifikayı Yazdır / PDF İndir' : 'Print / Download Certificate'}</span>
               </button>
               <button
                 onClick={onClose}
-                className="px-5 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer"
+                className="px-5 py-2.5 bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer"
               >
                 {isTr ? 'Listeye Dön ve Kapat' : 'Return to Showcase'}
               </button>
@@ -166,21 +166,21 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
           /* Form view */
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-1 pr-6">
-              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 dark:text-emerald-400">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>{t.title}</span>
               </div>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
                 {isTr ? 'Yeşil Mutabakatı İmzalayın ve Katılın' : 'Join the Mediterranean Green AI Compact'}
               </h2>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 {t.subtitle}
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1 sm:col-span-2">
-                <label className="text-xs font-semibold text-slate-700 block">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">
                   {t.instLabel}
                 </label>
                 <div className="relative">
@@ -191,13 +191,13 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
                     placeholder={isTr ? 'Örn: Anadolu Veri Teknolojileri A.Ş.' : 'e.g. Mediterranean Cloud Systems'}
                     value={institutionName}
                     onChange={(e) => setInstitutionName(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
+                    className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-700"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700 block">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">
                   {t.repLabel}
                 </label>
                 <div className="relative">
@@ -208,13 +208,13 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
                     placeholder={isTr ? 'Ad Soyad' : 'Full Name'}
                     value={representative}
                     onChange={(e) => setRepresentative(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
+                    className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-700"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700 block">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">
                   {t.emailLabel}
                 </label>
                 <div className="relative">
@@ -225,19 +225,19 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
                     placeholder="official@company.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
+                    className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-700"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700 block">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">
                   {t.catLabel}
                 </label>
                 <select
                   value={category}
                   onChange={(e: any) => setCategory(e.target.value)}
-                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
+                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-700"
                 >
                   <option value="Veri Merkezi">{isTr ? 'Veri Merkezi İşletmecisi' : 'Data Center Operator'}</option>
                   <option value="Enerji">{isTr ? 'Enerji Üretim & İletim Şirketi' : 'Energy Producer / Utility'}</option>
@@ -248,19 +248,19 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700 block">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">
                   {t.countryLabel}
                 </label>
                 <input
                   type="text"
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
-                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-700"
+                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-700"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700 block">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">
                   {t.capLabel}
                 </label>
                 <input
@@ -269,18 +269,18 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
                   max="5000"
                   value={capacityMW}
                   onChange={(e) => setCapacityMW(Number(e.target.value))}
-                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-700 font-mono"
+                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-700 font-mono"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700 block">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block">
                   {t.pueLabel}
                 </label>
                 <select
                   value={targetPUE}
                   onChange={(e) => setTargetPUE(Number(e.target.value))}
-                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-700 font-mono"
+                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-700 font-mono"
                 >
                   <option value={1.10}>PUE ≤ 1.10 (İleri Seviye Sıvı Daldırma)</option>
                   <option value={1.12}>PUE ≤ 1.12 (Direkt Çipe Sıvı Soğutma)</option>
@@ -290,36 +290,36 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
             </div>
 
             {/* Checkbox Disclosures */}
-            <div className="space-y-2.5 pt-2 border-t border-slate-200">
-              <label className="flex items-start gap-2.5 text-xs text-slate-700 cursor-pointer">
+            <div className="space-y-2.5 pt-2 border-t border-slate-200 dark:border-slate-700">
+              <label className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={checkAiAct}
                   onChange={(e) => setCheckAiAct(e.target.checked)}
                   required
-                  className="mt-0.5 accent-emerald-700 rounded"
+                  className="mt-0.5 accent-emerald-700 dark:accent-emerald-500 rounded"
                 />
                 <span>{t.check1}</span>
               </label>
 
-              <label className="flex items-start gap-2.5 text-xs text-slate-700 cursor-pointer">
+              <label className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={checkGridSync}
                   onChange={(e) => setCheckGridSync(e.target.checked)}
                   required
-                  className="mt-0.5 accent-emerald-700 rounded"
+                  className="mt-0.5 accent-emerald-700 dark:accent-emerald-500 rounded"
                 />
                 <span>{t.check2}</span>
               </label>
 
-              <label className="flex items-start gap-2.5 text-xs text-slate-700 cursor-pointer">
+              <label className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={checkWater}
                   onChange={(e) => setCheckWater(e.target.checked)}
                   required
-                  className="mt-0.5 accent-emerald-700 rounded"
+                  className="mt-0.5 accent-emerald-700 dark:accent-emerald-500 rounded"
                 />
                 <span>{t.check3}</span>
               </label>
@@ -330,13 +330,13 @@ export const CommitmentFormModal: React.FC<CommitmentFormModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2.5 text-xs font-semibold text-slate-600 hover:text-slate-900 cursor-pointer"
+                className="px-4 py-2.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer"
               >
                 {isTr ? 'Vazgeç' : 'Cancel'}
               </button>
               <button
                 type="submit"
-                className="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold rounded-xl transition-all shadow-sm cursor-pointer"
+                className="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl transition-all shadow-sm cursor-pointer"
               >
                 {t.btnSubmit}
               </button>

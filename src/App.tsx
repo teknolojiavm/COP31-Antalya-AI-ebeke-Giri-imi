@@ -14,6 +14,29 @@ export default function App() {
   const [lang, setLang] = useState<'tr' | 'en'>('tr');
   const [isCommitmentOpen, setIsCommitmentOpen] = useState(false);
   const [signatories, setSignatories] = useState<Signatory[]>(INITIAL_SIGNATORIES);
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
+
+  React.useEffect(() => {
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDark]);
+
+  const toggleDark = () => {
+    setIsDark((prev) => !prev);
+  };
 
   const isTr = lang === 'tr';
 
@@ -22,7 +45,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100/70 text-slate-900 flex flex-col font-sans selection:bg-emerald-200 selection:text-emerald-950">
+    <div className="min-h-screen bg-slate-100/70 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-emerald-200 dark:selection:bg-emerald-900 selection:text-emerald-950 dark:selection:text-emerald-100 transition-colors">
       {/* Top Header & Diplomatic Notification Ticker */}
       <Header
         activeTab={activeTab}
@@ -30,6 +53,8 @@ export default function App() {
         onOpenCommitment={() => setIsCommitmentOpen(true)}
         lang={lang}
         setLang={setLang}
+        isDark={isDark}
+        toggleDark={toggleDark}
       />
 
       {/* Main Content Area */}
@@ -81,17 +106,17 @@ export default function App() {
       />
 
       {/* Quiet, Compliant Institutional Footer */}
-      <footer className="mt-16 bg-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
+      <footer className="mt-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded bg-emerald-800 text-white flex items-center justify-center font-bold text-xs">
+            <div className="w-6 h-6 rounded bg-emerald-800 dark:bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">
               <Zap className="w-3.5 h-3.5 fill-current" />
             </div>
             <div>
-              <div className="font-bold text-slate-800 text-sm">
+              <div className="font-bold text-slate-800 dark:text-slate-200 text-sm">
                 COP31 Antalya Yapay Zekâ Taahhüdü & Elektrifikasyon Girişimi
               </div>
-              <div className="text-[11px] text-slate-500">
+              <div className="text-[11px] text-slate-500 dark:text-slate-400">
                 {isTr
                   ? 'Birleşmiş Milletler İklim Değişikliği Çerçeve Sözleşmesi (UNFCCC) Akdeniz İttifakı'
                   : 'United Nations Framework Convention on Climate Change (UNFCCC) Mediterranean Alliance'}
@@ -99,34 +124,34 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6 text-xs font-medium text-slate-600">
+          <div className="flex flex-wrap items-center gap-6 text-xs font-medium text-slate-600 dark:text-slate-300">
             <button
               onClick={() => setActiveTab('agenda')}
-              className="hover:text-emerald-800 transition-colors cursor-pointer"
+              className="hover:text-emerald-800 dark:hover:text-emerald-400 transition-colors cursor-pointer"
             >
               {isTr ? 'Liderler Zirvesi Takvimi' : 'Leaders Summit Calendar'}
             </button>
             <button
               onClick={() => setActiveTab('strategy')}
-              className="hover:text-emerald-800 transition-colors cursor-pointer"
+              className="hover:text-emerald-800 dark:hover:text-emerald-400 transition-colors cursor-pointer"
             >
               {isTr ? '1.5°C Aşım Raporu' : '1.5°C Overshoot Report'}
             </button>
             <button
               onClick={() => setActiveTab('transformation')}
-              className="hover:text-emerald-800 transition-colors cursor-pointer"
+              className="hover:text-emerald-800 dark:hover:text-emerald-400 transition-colors cursor-pointer"
             >
               {isTr ? 'Madde 50 Şeffaflık Formatı' : 'Article 50 Transparency'}
             </button>
             <button
               onClick={() => setIsCommitmentOpen(true)}
-              className="text-emerald-800 font-semibold hover:underline cursor-pointer"
+              className="text-emerald-800 dark:text-emerald-400 font-semibold hover:underline cursor-pointer"
             >
               {isTr ? 'Kurumsal Taahhüt Defteri' : 'Official Registry'}
             </button>
           </div>
 
-          <div className="text-[11px] text-slate-400">
+          <div className="text-[11px] text-slate-400 dark:text-slate-500">
             © 2026 COP31 Antalya. {isTr ? 'Tüm Hakları Saklıdır.' : 'All rights reserved.'}
           </div>
         </div>
